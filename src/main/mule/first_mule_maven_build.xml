@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="00b10b6f-1455-4d39-af78-d7011caf5d67" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="first_mule_maven_buildFlow" doc:id="ac0875de-2ea9-4a5d-9ed3-9406a069cd40" >
+		<http:listener doc:name="Listener" doc:id="b7dcd909-03b1-4654-b1ae-428510ed34bb" config-ref="HTTP_Listener_config" path="/maven"/>
+		<logger level="INFO" doc:name="Logger" doc:id="a309195c-c7ae-4bbd-8325-1748c17e4ab6" message="executedMule maven project"/>
+		<set-payload value="executed Mule maven project" doc:name="Set Payload" doc:id="4f64f212-8e0b-4b91-a5d5-83724410f001" />
+	</flow>
+</mule>
